@@ -1,0 +1,58 @@
+{
+    "templateId": "benchmark-template",
+    "organizationId": "myorg",
+    "version": "0.1.0",
+    "name": "Benchmark-template",
+    "description": "My custom template",
+    "license": "CC0",
+    "metamodelVersion": 16,
+    "allowedPackages": [
+        {
+            "orgId": null,
+            "kmId": null,
+            "minVersion": null,
+            "maxVersion": null
+        }
+    ],
+    "formats": [
+        {
+            "uuid": "cecc76eb-1002-40d2-9170-125ca3cfb34a",
+            "name": "JSON",
+            "icon": "fas fa-file",
+            "steps": [
+                {
+                    "name": "jinja",
+                    "options": {
+                        "template": "src/template.json.j2",
+                        "content-type": "application/json",
+                        "extension": "json"
+                    }
+                }
+            ]
+        },
+        {
+            "uuid": "97226cea-8c1e-40e2-8f52-75a0fe133532",
+            "name": "Turtle",
+            "icon": "fas fa-file",
+            "steps": [
+                {
+                    "name": "jinja",
+                    "options": {
+                        "template": "src/template.ttl.j2",
+                        "content-type": "text/ttl",
+                        "extension": "ttl"
+                    }
+                }
+            ]
+        }
+    ],
+    "_tdk": {
+        "version": "4.15.0",
+        "readmeFile": "README.md",
+        "files": [
+            "src/template.json.j2",
+            "src/template.ttl.j2",
+            "LICENSE"
+        ]
+    }
+}
