@@ -1,0 +1,999 @@
+{
+    "config": {
+        "clientUrl": "http://localhost:8080/wizard"
+    },
+    "document": {
+        "createdAt": "2025-03-05T08:29:35.801423523Z",
+        "createdBy": {
+            "active": true,
+            "affiliation": "My University",
+            "createdAt": "2018-01-20T00:00:00Z",
+            "email": "albert.einstein@example.com",
+            "firstName": "Albert",
+            "imageUrl": null,
+            "lastName": "Einstein",
+            "permissions": [
+                "UM_PERM",
+                "KM_PERM",
+                "KM_UPGRADE_PERM",
+                "KM_PUBLISH_PERM",
+                "PM_READ_PERM",
+                "PM_WRITE_PERM",
+                "QTN_PERM",
+                "CFG_PERM",
+                "SUBM_PERM",
+                "DOC_PERM",
+                "QTN_TML_PERM",
+                "QTN_IMPORTER_PERM",
+                "LOC_PERM",
+                "DOC_TML_WRITE_PERM",
+                "DOC_TML_READ_PERM",
+                "QTN_ACTION_PERM",
+                "QTN_FILE_PERM"
+            ],
+            "role": "admin",
+            "sources": [
+                "internal"
+            ],
+            "updatedAt": "2018-01-25T00:00:00Z",
+            "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+        },
+        "documentTemplateId": "myorg:benchmark-template:0.1.0",
+        "formatUuid": "cecc76eb-1002-40d2-9170-125ca3cfb34a",
+        "name": "formal-project",
+        "uuid": "090e573b-9474-4375-9064-e08379e14ea8"
+    },
+    "groups": [],
+    "knowledgeModel": {
+        "annotations": [],
+        "chapterUuids": [
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12"
+        ],
+        "entities": {
+            "answers": {
+                "28a2fa9b-503a-4e12-992d-8689b44e30a7": {
+                    "advice": null,
+                    "annotations": [],
+                    "followUpUuids": [
+                        "fa81aab2-4ff7-4a11-ae83-93e43131eee4"
+                    ],
+                    "label": "Yes",
+                    "metricMeasures": [],
+                    "uuid": "28a2fa9b-503a-4e12-992d-8689b44e30a7"
+                },
+                "80d28716-d08b-4445-8cfa-4559e177cf83": {
+                    "advice": null,
+                    "annotations": [],
+                    "followUpUuids": [
+                        "b00e2d2f-50d6-4d8d-81c8-84ad8ed581df",
+                        "572c41c5-11b8-41e3-9754-98896267a434",
+                        "a2c248da-c855-496a-a4d0-1df237387f74"
+                    ],
+                    "label": "Add contact information",
+                    "metricMeasures": [],
+                    "uuid": "80d28716-d08b-4445-8cfa-4559e177cf83"
+                },
+                "ad047449-abaf-4f55-b859-071ad88c373b": {
+                    "advice": null,
+                    "annotations": [],
+                    "followUpUuids": [],
+                    "label": "No",
+                    "metricMeasures": [],
+                    "uuid": "ad047449-abaf-4f55-b859-071ad88c373b"
+                },
+                "e687fb76-f31e-44fe-89e5-d83668aa1ee8": {
+                    "advice": null,
+                    "annotations": [],
+                    "followUpUuids": [
+                        "3d5974b0-07f7-4325-9268-1ce3ef78ad10",
+                        "6818bf3d-b8f8-4dac-86a4-d951689fbcfe",
+                        "8530abd8-33e3-4474-9888-88d5d02dd15b"
+                    ],
+                    "label": "Please add person information",
+                    "metricMeasures": [],
+                    "uuid": "e687fb76-f31e-44fe-89e5-d83668aa1ee8"
+                },
+                "e85df29e-6dff-46fa-8902-ef33ad18557e": {
+                    "advice": null,
+                    "annotations": [],
+                    "followUpUuids": [
+                        "16354e07-ba95-438d-b7eb-069ec51235eb"
+                    ],
+                    "label": "Yes",
+                    "metricMeasures": [],
+                    "uuid": "e85df29e-6dff-46fa-8902-ef33ad18557e"
+                },
+                "edec6225-9f4f-49b6-a281-53db6d2eb255": {
+                    "advice": null,
+                    "annotations": [],
+                    "followUpUuids": [],
+                    "label": "No",
+                    "metricMeasures": [],
+                    "uuid": "edec6225-9f4f-49b6-a281-53db6d2eb255"
+                }
+            },
+            "chapters": {
+                "6093b70d-4b05-431e-aee9-6aa625e8ac12": {
+                    "annotations": [],
+                    "questionUuids": [
+                        "f91f6a86-5ba0-45be-b6c1-764c764488fb",
+                        "ec0b2c5a-d368-45f8-849f-bdeaf9a7751f",
+                        "fc7a565c-672a-4f8d-809a-c9b4ff58e12a",
+                        "01decfa8-2851-46ee-843b-9445550e7359",
+                        "3cf19f03-5fed-437f-aa0a-10cec30d49c2",
+                        "9417e146-f589-442d-9ebc-098f96573f07",
+                        "6c2f54dd-fc90-4c30-a719-38841358384c",
+                        "ec3ccaf8-dc4a-4a71-9dc2-52b57b0527cc",
+                        "95c61725-e76d-494a-88a7-8de3b70de406",
+                        "0e281327-2239-4c44-be0b-3569d36e0c6d",
+                        "e7bba27c-149b-44e2-a3ff-2c59539a43ef"
+                    ],
+                    "text": null,
+                    "title": "Benchmark General Information",
+                    "uuid": "6093b70d-4b05-431e-aee9-6aa625e8ac12"
+                }
+            },
+            "choices": {
+                "31f1a494-0ee6-4cb7-9e73-700770a54772": {
+                    "annotations": [],
+                    "label": "Organization",
+                    "uuid": "31f1a494-0ee6-4cb7-9e73-700770a54772"
+                },
+                "c66f3022-20f5-4fd9-8835-8ce0e6999c49": {
+                    "annotations": [],
+                    "label": "Person",
+                    "uuid": "c66f3022-20f5-4fd9-8835-8ce0e6999c49"
+                }
+            },
+            "experts": {},
+            "integrations": {},
+            "metrics": {},
+            "phases": {},
+            "questions": {
+                "01decfa8-2851-46ee-843b-9445550e7359": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark abbreviation",
+                    "uuid": "01decfa8-2851-46ee-843b-9445550e7359",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "02b82ed9-0391-4ea5-9b48-e12234ac64e7": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Organization URL",
+                    "uuid": "02b82ed9-0391-4ea5-9b48-e12234ac64e7",
+                    "validations": [],
+                    "valueType": "UrlQuestionValueType"
+                },
+                "0e281327-2239-4c44-be0b-3569d36e0c6d": {
+                    "annotations": [],
+                    "answerUuids": [
+                        "e85df29e-6dff-46fa-8902-ef33ad18557e",
+                        "ad047449-abaf-4f55-b859-071ad88c373b"
+                    ],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Do you have information that describes the responsable person?",
+                    "uuid": "0e281327-2239-4c44-be0b-3569d36e0c6d"
+                },
+                "1473639e-d052-4270-ab61-2366f4c70c0d": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate person email",
+                    "uuid": "1473639e-d052-4270-ab61-2366f4c70c0d",
+                    "validations": [],
+                    "valueType": "EmailQuestionValueType"
+                },
+                "147b5deb-88a1-49f5-bcc3-17a49045c9e0": {
+                    "annotations": [],
+                    "answerUuids": [
+                        "80d28716-d08b-4445-8cfa-4559e177cf83"
+                    ],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Contact person",
+                    "uuid": "147b5deb-88a1-49f5-bcc3-17a49045c9e0"
+                },
+                "16354e07-ba95-438d-b7eb-069ec51235eb": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "itemTemplateQuestionUuids": [
+                        "b81f2735-e5c7-4863-80a3-e32769928b39",
+                        "1473639e-d052-4270-ab61-2366f4c70c0d",
+                        "9a13d8eb-fbe6-42ca-bfb2-233c7096a714"
+                    ],
+                    "questionType": "ListQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate information",
+                    "uuid": "16354e07-ba95-438d-b7eb-069ec51235eb"
+                },
+                "3cf19f03-5fed-437f-aa0a-10cec30d49c2": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "itemTemplateQuestionUuids": [
+                        "8fd580d7-fbfa-4fcf-89f2-55c57ae4d914"
+                    ],
+                    "questionType": "ListQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benckmark keyword",
+                    "uuid": "3cf19f03-5fed-437f-aa0a-10cec30d49c2"
+                },
+                "3d5974b0-07f7-4325-9268-1ce3ef78ad10": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person name",
+                    "uuid": "3d5974b0-07f7-4325-9268-1ce3ef78ad10",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "572c41c5-11b8-41e3-9754-98896267a434": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person email",
+                    "uuid": "572c41c5-11b8-41e3-9754-98896267a434",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "6818bf3d-b8f8-4dac-86a4-d951689fbcfe": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person Email",
+                    "uuid": "6818bf3d-b8f8-4dac-86a4-d951689fbcfe",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "6c2f54dd-fc90-4c30-a719-38841358384c": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark policy URL",
+                    "uuid": "6c2f54dd-fc90-4c30-a719-38841358384c",
+                    "validations": [],
+                    "valueType": "UrlQuestionValueType"
+                },
+                "8530abd8-33e3-4474-9888-88d5d02dd15b": {
+                    "annotations": [],
+                    "answerUuids": [],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person ORCID",
+                    "uuid": "8530abd8-33e3-4474-9888-88d5d02dd15b"
+                },
+                "8fd580d7-fbfa-4fcf-89f2-55c57ae4d914": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Keyword",
+                    "uuid": "8fd580d7-fbfa-4fcf-89f2-55c57ae4d914",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "9417e146-f589-442d-9ebc-098f96573f07": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark homepage",
+                    "uuid": "9417e146-f589-442d-9ebc-098f96573f07",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "95c61725-e76d-494a-88a7-8de3b70de406": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark version",
+                    "uuid": "95c61725-e76d-494a-88a7-8de3b70de406",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "9a13d8eb-fbe6-42ca-bfb2-233c7096a714": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate ORCID",
+                    "uuid": "9a13d8eb-fbe6-42ca-bfb2-233c7096a714",
+                    "validations": [],
+                    "valueType": "UrlQuestionValueType"
+                },
+                "a2c248da-c855-496a-a4d0-1df237387f74": {
+                    "annotations": [],
+                    "answerUuids": [],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person ORCID",
+                    "uuid": "a2c248da-c855-496a-a4d0-1df237387f74"
+                },
+                "ab4131a4-a095-4f2c-8aba-681245d93d44": {
+                    "annotations": [],
+                    "answerUuids": [],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Organization",
+                    "uuid": "ab4131a4-a095-4f2c-8aba-681245d93d44"
+                },
+                "b00e2d2f-50d6-4d8d-81c8-84ad8ed581df": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person name",
+                    "uuid": "b00e2d2f-50d6-4d8d-81c8-84ad8ed581df",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "b81f2735-e5c7-4863-80a3-e32769928b39": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate person name",
+                    "uuid": "b81f2735-e5c7-4863-80a3-e32769928b39",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "baec70b8-7997-490d-be99-f42b290a7c5b": {
+                    "annotations": [],
+                    "answerUuids": [
+                        "e687fb76-f31e-44fe-89e5-d83668aa1ee8"
+                    ],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Person",
+                    "uuid": "baec70b8-7997-490d-be99-f42b290a7c5b"
+                },
+                "dcc1197d-5bb0-48b7-ad8a-1f01fda8c5e9": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Organization name",
+                    "uuid": "dcc1197d-5bb0-48b7-ad8a-1f01fda8c5e9",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "e7bba27c-149b-44e2-a3ff-2c59539a43ef": {
+                    "annotations": [],
+                    "answerUuids": [
+                        "28a2fa9b-503a-4e12-992d-8689b44e30a7",
+                        "edec6225-9f4f-49b6-a281-53db6d2eb255"
+                    ],
+                    "expertUuids": [],
+                    "questionType": "OptionsQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Do you have information that describes responsable organization?",
+                    "uuid": "e7bba27c-149b-44e2-a3ff-2c59539a43ef"
+                },
+                "ec0b2c5a-d368-45f8-849f-bdeaf9a7751f": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark title",
+                    "uuid": "ec0b2c5a-d368-45f8-849f-bdeaf9a7751f",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                },
+                "ec3ccaf8-dc4a-4a71-9dc2-52b57b0527cc": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark theme",
+                    "uuid": "ec3ccaf8-dc4a-4a71-9dc2-52b57b0527cc",
+                    "validations": [],
+                    "valueType": "UrlQuestionValueType"
+                },
+                "f91f6a86-5ba0-45be-b6c1-764c764488fb": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark global unique identifier",
+                    "uuid": "f91f6a86-5ba0-45be-b6c1-764c764488fb",
+                    "validations": [],
+                    "valueType": "UrlQuestionValueType"
+                },
+                "fa81aab2-4ff7-4a11-ae83-93e43131eee4": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "itemTemplateQuestionUuids": [
+                        "dcc1197d-5bb0-48b7-ad8a-1f01fda8c5e9",
+                        "02b82ed9-0391-4ea5-9b48-e12234ac64e7"
+                    ],
+                    "questionType": "ListQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate information",
+                    "uuid": "fa81aab2-4ff7-4a11-ae83-93e43131eee4"
+                },
+                "fc7a565c-672a-4f8d-809a-c9b4ff58e12a": {
+                    "annotations": [],
+                    "expertUuids": [],
+                    "questionType": "ValueQuestion",
+                    "referenceUuids": [],
+                    "requiredPhaseUuid": null,
+                    "tagUuids": [],
+                    "text": null,
+                    "title": "Indicate benchmark description",
+                    "uuid": "fc7a565c-672a-4f8d-809a-c9b4ff58e12a",
+                    "validations": [],
+                    "valueType": "StringQuestionValueType"
+                }
+            },
+            "references": {},
+            "resourceCollections": {},
+            "resourcePages": {},
+            "tags": {}
+        },
+        "integrationUuids": [],
+        "metricUuids": [],
+        "phaseUuids": [],
+        "resourceCollectionUuids": [],
+        "tagUuids": [],
+        "uuid": "36d2a594-a564-4bdd-91c1-35467f7c46f6"
+    },
+    "metamodelVersion": 16,
+    "organization": {
+        "affiliations": [],
+        "description": "My Organization Description",
+        "name": "My Organization",
+        "organizationId": "myorg"
+    },
+    "package": {
+        "createdAt": "2025-02-14T12:12:04.238706Z",
+        "description": "DMP for creating FAIR assessment benchmarks",
+        "id": "myorg:benchmark-authoring-tool-id:0.0.1",
+        "kmId": "benchmark-authoring-tool-id",
+        "name": "benchmark-authoring-tool",
+        "organization": null,
+        "organizationId": "myorg",
+        "remoteLatestVersion": null,
+        "version": "0.0.1",
+        "versions": []
+    },
+    "questionnaire": {
+        "createdAt": "2025-03-05T08:20:11.914273Z",
+        "createdBy": {
+            "active": true,
+            "affiliation": "My University",
+            "createdAt": "2018-01-20T00:00:00Z",
+            "email": "albert.einstein@example.com",
+            "firstName": "Albert",
+            "imageUrl": null,
+            "lastName": "Einstein",
+            "permissions": [
+                "UM_PERM",
+                "KM_PERM",
+                "KM_UPGRADE_PERM",
+                "KM_PUBLISH_PERM",
+                "PM_READ_PERM",
+                "PM_WRITE_PERM",
+                "QTN_PERM",
+                "CFG_PERM",
+                "SUBM_PERM",
+                "DOC_PERM",
+                "QTN_TML_PERM",
+                "QTN_IMPORTER_PERM",
+                "LOC_PERM",
+                "DOC_TML_WRITE_PERM",
+                "DOC_TML_READ_PERM",
+                "QTN_ACTION_PERM",
+                "QTN_FILE_PERM"
+            ],
+            "role": "admin",
+            "sources": [
+                "internal"
+            ],
+            "updatedAt": "2018-01-25T00:00:00Z",
+            "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+        },
+        "description": null,
+        "files": [],
+        "labels": {},
+        "name": "formal-project",
+        "phaseUuid": null,
+        "projectTags": [],
+        "replies": {
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.01decfa8-2851-46ee-843b-9445550e7359": {
+                "createdAt": "2025-03-05T08:21:05.016180102Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Abbreviation"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.0e281327-2239-4c44-be0b-3569d36e0c6d": {
+                "createdAt": "2025-03-05T08:21:50.455573268Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "AnswerReply",
+                    "value": "e85df29e-6dff-46fa-8902-ef33ad18557e"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.0e281327-2239-4c44-be0b-3569d36e0c6d.e85df29e-6dff-46fa-8902-ef33ad18557e.16354e07-ba95-438d-b7eb-069ec51235eb": {
+                "createdAt": "2025-03-05T08:21:52.21786237Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "ItemListReply",
+                    "value": [
+                        "190d2a62-ba80-408a-a6fd-cf155ba7215b"
+                    ]
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.0e281327-2239-4c44-be0b-3569d36e0c6d.e85df29e-6dff-46fa-8902-ef33ad18557e.16354e07-ba95-438d-b7eb-069ec51235eb.190d2a62-ba80-408a-a6fd-cf155ba7215b.1473639e-d052-4270-ab61-2366f4c70c0d": {
+                "createdAt": "2025-03-05T08:22:07.949509159Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "personame@example.com"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.0e281327-2239-4c44-be0b-3569d36e0c6d.e85df29e-6dff-46fa-8902-ef33ad18557e.16354e07-ba95-438d-b7eb-069ec51235eb.190d2a62-ba80-408a-a6fd-cf155ba7215b.9a13d8eb-fbe6-42ca-bfb2-233c7096a714": {
+                "createdAt": "2025-03-05T08:22:15.305284945Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "https://w3id.org/ftr#ORCID-12345"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.0e281327-2239-4c44-be0b-3569d36e0c6d.e85df29e-6dff-46fa-8902-ef33ad18557e.16354e07-ba95-438d-b7eb-069ec51235eb.190d2a62-ba80-408a-a6fd-cf155ba7215b.b81f2735-e5c7-4863-80a3-e32769928b39": {
+                "createdAt": "2025-03-05T08:21:57.529197438Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Person name"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.3cf19f03-5fed-437f-aa0a-10cec30d49c2": {
+                "createdAt": "2025-03-05T08:21:15.4886544Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "ItemListReply",
+                    "value": [
+                        "23d5dc85-0ad4-44a2-b371-b297b4841822",
+                        "b68cb4d3-0a64-47c1-a300-bc77f1c9c00c"
+                    ]
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.3cf19f03-5fed-437f-aa0a-10cec30d49c2.23d5dc85-0ad4-44a2-b371-b297b4841822.8fd580d7-fbfa-4fcf-89f2-55c57ae4d914": {
+                "createdAt": "2025-03-05T08:21:14.599300208Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Keyword"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.3cf19f03-5fed-437f-aa0a-10cec30d49c2.b68cb4d3-0a64-47c1-a300-bc77f1c9c00c.8fd580d7-fbfa-4fcf-89f2-55c57ae4d914": {
+                "createdAt": "2025-03-05T08:21:21.882503706Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Keyword2"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.6c2f54dd-fc90-4c30-a719-38841358384c": {
+                "createdAt": "2025-03-05T08:21:34.527993586Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "https://w3id.org/ftr#PolicyURL"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.9417e146-f589-442d-9ebc-098f96573f07": {
+                "createdAt": "2025-03-05T08:21:27.691521812Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "https://w3id.org/ftr#Homepage"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.95c61725-e76d-494a-88a7-8de3b70de406": {
+                "createdAt": "2025-03-05T08:21:44.703372282Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "0.2.0"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.e7bba27c-149b-44e2-a3ff-2c59539a43ef": {
+                "createdAt": "2025-03-05T08:22:17.158598679Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "AnswerReply",
+                    "value": "28a2fa9b-503a-4e12-992d-8689b44e30a7"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.e7bba27c-149b-44e2-a3ff-2c59539a43ef.28a2fa9b-503a-4e12-992d-8689b44e30a7.fa81aab2-4ff7-4a11-ae83-93e43131eee4": {
+                "createdAt": "2025-03-05T08:22:20.838169008Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "ItemListReply",
+                    "value": [
+                        "abaca857-fb75-4c64-a523-43588ec62e4e"
+                    ]
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.e7bba27c-149b-44e2-a3ff-2c59539a43ef.28a2fa9b-503a-4e12-992d-8689b44e30a7.fa81aab2-4ff7-4a11-ae83-93e43131eee4.abaca857-fb75-4c64-a523-43588ec62e4e.02b82ed9-0391-4ea5-9b48-e12234ac64e7": {
+                "createdAt": "2025-03-05T08:22:40.347679211Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "https://w3id.org/ftr#OrganizationURL"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.e7bba27c-149b-44e2-a3ff-2c59539a43ef.28a2fa9b-503a-4e12-992d-8689b44e30a7.fa81aab2-4ff7-4a11-ae83-93e43131eee4.abaca857-fb75-4c64-a523-43588ec62e4e.dcc1197d-5bb0-48b7-ad8a-1f01fda8c5e9": {
+                "createdAt": "2025-03-05T08:22:30.968843395Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Organization name"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.ec0b2c5a-d368-45f8-849f-bdeaf9a7751f": {
+                "createdAt": "2025-03-05T08:20:49.023814353Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Formal Title"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.ec3ccaf8-dc4a-4a71-9dc2-52b57b0527cc": {
+                "createdAt": "2025-03-05T08:21:42.233382169Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "https://w3id.org/ftr#Theme"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.f91f6a86-5ba0-45be-b6c1-764c764488fb": {
+                "createdAt": "2025-03-05T08:20:43.389340695Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "https://w3id.org/ftr#GobalUniqueIdentifier"
+                }
+            },
+            "6093b70d-4b05-431e-aee9-6aa625e8ac12.fc7a565c-672a-4f8d-809a-c9b4ff58e12a": {
+                "createdAt": "2025-03-05T08:20:53.929303506Z",
+                "createdBy": {
+                    "firstName": "Albert",
+                    "gravatarHash": "a8ef6e3f64f212bdb6decadd7dd60731",
+                    "imageUrl": null,
+                    "lastName": "Einstein",
+                    "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+                },
+                "value": {
+                    "type": "StringReply",
+                    "value": "Formal Description"
+                }
+            }
+        },
+        "updatedAt": "2025-03-05T08:22:40.348453Z",
+        "uuid": "8d4a6f9e-cd3a-49e0-80a4-9e0367bbbcde",
+        "versionUuid": null,
+        "versions": []
+    },
+    "report": {
+        "chapterReports": [
+            {
+                "chapterUuid": "6093b70d-4b05-431e-aee9-6aa625e8ac12",
+                "indications": [
+                    {
+                        "answeredQuestions": 20,
+                        "indicationType": "PhasesAnsweredIndication",
+                        "unansweredQuestions": 0
+                    },
+                    {
+                        "answeredQuestions": 20,
+                        "indicationType": "AnsweredIndication",
+                        "unansweredQuestions": 0
+                    }
+                ],
+                "metrics": []
+            }
+        ],
+        "chapters": [
+            {
+                "annotations": [],
+                "questionUuids": [
+                    "f91f6a86-5ba0-45be-b6c1-764c764488fb",
+                    "ec0b2c5a-d368-45f8-849f-bdeaf9a7751f",
+                    "fc7a565c-672a-4f8d-809a-c9b4ff58e12a",
+                    "01decfa8-2851-46ee-843b-9445550e7359",
+                    "3cf19f03-5fed-437f-aa0a-10cec30d49c2",
+                    "9417e146-f589-442d-9ebc-098f96573f07",
+                    "6c2f54dd-fc90-4c30-a719-38841358384c",
+                    "ec3ccaf8-dc4a-4a71-9dc2-52b57b0527cc",
+                    "95c61725-e76d-494a-88a7-8de3b70de406",
+                    "0e281327-2239-4c44-be0b-3569d36e0c6d",
+                    "e7bba27c-149b-44e2-a3ff-2c59539a43ef"
+                ],
+                "text": null,
+                "title": "Benchmark General Information",
+                "uuid": "6093b70d-4b05-431e-aee9-6aa625e8ac12"
+            }
+        ],
+        "createdAt": "2025-03-05T08:29:35.811168464Z",
+        "metrics": [],
+        "totalReport": {
+            "indications": [
+                {
+                    "answeredQuestions": 20,
+                    "indicationType": "PhasesAnsweredIndication",
+                    "unansweredQuestions": 0
+                },
+                {
+                    "answeredQuestions": 20,
+                    "indicationType": "AnsweredIndication",
+                    "unansweredQuestions": 0
+                }
+            ],
+            "metrics": []
+        },
+        "updatedAt": "2025-03-05T08:29:35.811168464Z",
+        "uuid": "32d1e094-3299-4c69-b951-2175860e74ed"
+    },
+    "users": [
+        {
+            "perms": [
+                "VIEW",
+                "COMMENT",
+                "EDIT",
+                "ADMIN"
+            ],
+            "user": {
+                "active": true,
+                "affiliation": "My University",
+                "createdAt": "2018-01-20T00:00:00Z",
+                "email": "albert.einstein@example.com",
+                "firstName": "Albert",
+                "imageUrl": null,
+                "lastName": "Einstein",
+                "permissions": [
+                    "UM_PERM",
+                    "KM_PERM",
+                    "KM_UPGRADE_PERM",
+                    "KM_PUBLISH_PERM",
+                    "PM_READ_PERM",
+                    "PM_WRITE_PERM",
+                    "QTN_PERM",
+                    "CFG_PERM",
+                    "SUBM_PERM",
+                    "DOC_PERM",
+                    "QTN_TML_PERM",
+                    "QTN_IMPORTER_PERM",
+                    "LOC_PERM",
+                    "DOC_TML_WRITE_PERM",
+                    "DOC_TML_READ_PERM",
+                    "QTN_ACTION_PERM",
+                    "QTN_FILE_PERM"
+                ],
+                "role": "admin",
+                "sources": [
+                    "internal"
+                ],
+                "updatedAt": "2018-01-25T00:00:00Z",
+                "uuid": "ec6f8e90-2a91-49ec-aa3f-9eab2267fc66"
+            }
+        }
+    ],
+    "extras": {}
+}

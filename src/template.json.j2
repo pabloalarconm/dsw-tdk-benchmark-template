@@ -1,1 +1,17 @@
-{{ ctx|tojson(4)}}
+{%- import "src/_uuids.j2" as uuids with context -%}
+{%- set km = ctx.knowledgeModel -%}
+{%- set repliesMap = ctx.questionnaire.replies -%}
+
+{%- set GeneralMap = {
+    "GUID": repliesMap[uuids.chapterUuid+ '.' + uuids.GUIDUuid]["value"],
+    "Title": repliesMap[uuids.chapterUuid + '.' + uuids.TitleUuid]["value"],
+    "Description": repliesMap[uuids.chapterUuid + '.' + uuids.DescriptionUuid]["value"],
+    "Abbreviation": repliesMap[uuids.chapterUuid + '.' + uuids.AbreviationQuestionUuid]["value"],
+
+    "Homepage": repliesMap[uuids.chapterUuid + '.' + uuids.HomepageUuid]["value"],
+    "policyURL": repliesMap[uuids.chapterUuid + '.' + uuids.PolicyURLUuid]["value"],
+    "Theme": repliesMap[uuids.chapterUuid + '.' + uuids.ThemeUuid]["value"],
+    "Version": repliesMap[uuids.chapterUuid + '.' + uuids.VersionUuid]["value"]
+} -%}
+
+{{GeneralMap|tojson }}
