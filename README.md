@@ -1,12 +1,12 @@
 # Benchmark-template
 
-My custom template
+DSW-TDK template for creating Benchmark using Knowledge model-based questionnaire.
 
 ## Changelog
 
-### 0.1.0
+### 0.1.42
 
-- Initial version of Benchmark-template template
+- First complete template defined
 
 ## License
 
