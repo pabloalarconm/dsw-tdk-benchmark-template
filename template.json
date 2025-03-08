@@ -1,7 +1,7 @@
 {
     "templateId": "benchmark-template",
     "organizationId": "myorg",
-    "version": "0.1.18",
+    "version": "0.1.42",
     "name": "Benchmark-template",
     "description": "My custom template",
     "license": "CC0",
