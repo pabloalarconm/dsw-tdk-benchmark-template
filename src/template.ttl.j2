@@ -1,6 +1,6 @@
 {%- import "src/_mapping.json.j2" as map with context -%}
-{% set base_uri = "http://example.com/#" %}
-@prefix this: <{{ base_uri }}> .
+{% if map.GeneralMap.valuesMetricMap %}{%- set metric_keys = map.GeneralMap.valuesMetricMap.keys() -%}{% endif %}
+{%- set first_metric_key = metric_keys | list | first -%}
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
@@ -12,28 +12,29 @@
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#> .
 
-<{{base_uri}}/Benchmark> a ftr:Benchmark ;
-    {% if map.GeneralMap.GUID %}dcterms:identifier <{{map.GeneralMap.GUID}}> ;{% endif %}
+ {% if map.GeneralMap.TitleStripped %}<https://www.this.com/benchmark/{{first_metric_key}}/{{map.GeneralMap.TitleStripped}}> a ftr:Benchmark ;{% endif %}
+    {% if map.GeneralMap.TitleStripped %}dcterms:identifier <https://www.this.com/benchmark/{{first_metric_key}}/{{map.GeneralMap.TitleStripped}}ID> ;{% endif %}
     {% if map.GeneralMap.Title %}dcterms:title "{{map.GeneralMap.Title}}"^^xsd:string ;
     rdfs:label "{{map.GeneralMap.Title}}"^^xsd:string ;{% endif %}
     {% if map.GeneralMap.Abbreviation %}vivo:abbreviation "{{map.GeneralMap.Abbreviation}}"^^xsd:string ;{% endif %}
     {% if map.GeneralMap.Description %}dcterms:description """{{map.GeneralMap.Description}}"""^^xsd:string ;{% endif %}
     {% if map.GeneralMap.valuesKeywordMap %}dcat:keyword {% for key, value in map.GeneralMap.valuesKeywordMap.items() %} "{{value}}"@en{{ "," if not loop.last }}{{ ";" if loop.last }} {% endfor %}{% endif %}
     {% if map.GeneralMap.Homepage %}dcat:landingPage <{{map.GeneralMap.Homepage}}> ;{% endif %}
+    {% if map.GeneralMap.valuesThemeMap %}dcat:keyword {% for key, value in map.GeneralMap.valuesThemeMap.items() %} <{{value.id}}>{{ "," if not loop.last }}{{ ";" if loop.last }} {% endfor %}{% endif %}
     {% if map.GeneralMap.Version %}dcat:version "{{map.GeneralMap.Version}}"^^xsd:string ;{% endif %}
     {% if map.GeneralMap.License %}dcterms:license <{{map.GeneralMap.License}}> ;{% endif %}
     ftr:status "Active"@en ;
     {% if map.GeneralMap.policyURL %}ftr:inDimension <{{ map.GeneralMap.policyURL }}>;{% endif %}
-    {% if map.GeneralMap.valuesOrganizationMap %}{% for key, org in map.GeneralMap.valuesOrganizationMap.items() %}dcterms:creator <{{base_uri}}{{key}}/Organization> {{ "," if not loop.last }}{{ ";" if loop.last }} {% endfor %}{% endif %}
-    {% if map.GeneralMap.valuesPersonMap %}{% for key, person in map.GeneralMap.valuesPersonMap.items() %}dcat:contactPoint <{{person.person_orcid}}> {{ "," if not loop.last }} {{ ";" if loop.last }} {% endfor %}{% endif %}
+    {% if map.GeneralMap.valuesOrganizationMap %}{% for key, org in map.GeneralMap.valuesOrganizationMap.items() %}dcterms:creator <{{org.organization_url}}> {{ "," if not loop.last }}{{ ";" if loop.last }} {% endfor %}{% endif %}
+    {% if map.GeneralMap.valuesPersonMap %}{% for key, person in map.GeneralMap.valuesPersonMap.items() %}dcat:contactPoint <https://orcid.org/{{person.person_orcid_code}}> {{ "," if not loop.last }} {{ ";" if loop.last }} {% endfor %}{% endif %}
     {% if map.GeneralMap.valuesMetricMap %}ftr:hasAssociatedMetric {% for key, metric in map.GeneralMap.valuesMetricMap.items() %} <{{ metric.metric_id }}>{{ "," if not loop.last }}{{ "." if loop.last }} {% endfor %}{% endif %}
 
 {% for key, org in map.GeneralMap.valuesOrganizationMap.items() %}
-<{{ base_uri }}{{ key }}/Organization> a vcard:Organization ;
+<{{ org.organization_url}}> a vcard:Organization ;
     vcard:organization-name "{{ org.organization_name }}"^^xsd:string . {% endfor %}
 {% for key, person in map.GeneralMap.valuesPersonMap.items() %}
-<{{ person.person_orcid}}/Person> a vcard:Individual ;
-    vcard:fn "{{ person.person_name }}"^^xsd:string ;
+<https://orcid.org/{{person.person_orcid_code}}> a vcard:Individual ;
+    vcard:fn "{{ person.person_orcid_name }}"^^xsd:string ;
     vcard:hasEmail <mailto:{{ person.person_email }}> . {% endfor %}
 {% for key, metric in map.GeneralMap.valuesMetricMap.items() %}
 <{{ metric.metric_id }}> a dqv:Metric ;

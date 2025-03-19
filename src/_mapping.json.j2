@@ -5,24 +5,37 @@
 {%- set keyword_key = uuids.chapterUuid + '.' + uuids.GeneralKeywordUuid -%}
 {%- set KeyWordMap = [] -%}
 
-{%- if keyword_key in repliesMap -%}
-    {%- set keyword_data = repliesMap[keyword_key] -%}
-    {%- if keyword_data.value and 'value' in keyword_data.value -%}
-        {%- for item in keyword_data.value.value -%}
-            {%- do KeyWordMap.append(item) -%}
-        {%- endfor -%}
-    {%- endif -%}
+{%- if keyword_key in repliesMap and repliesMap[keyword_key].value and 'value' in repliesMap[keyword_key].value -%}
+    {%- for item in repliesMap[keyword_key].value.value -%}
+        {%- do KeyWordMap.append(item) -%}
+    {%- endfor -%}
 {%- endif -%}
 
 {%- set valuesKeywordMap = {} -%}
 
 {%- for key in KeyWordMap -%}
-    {%- set full_key = uuids.chapterUuid + '.' + uuids.GeneralKeywordUuid + '.' + key + '.' + uuids.FinalKeywordUuid -%}
-    {%- if full_key in repliesMap -%}
-        {%- set entry = repliesMap[full_key] -%}
-        {%- if entry.value and 'value' in entry.value -%}
-            {%- do valuesKeywordMap.update({key: entry.value.value}) -%}
-        {%- endif -%}
+    {%- set full_key = keyword_key + '.' + key + '.' + uuids.FinalKeywordUuid -%}
+    {%- if full_key in repliesMap and repliesMap[full_key].value and 'value' in repliesMap[full_key].value -%}
+        {%- do valuesKeywordMap.update({key: repliesMap[full_key].value.value}) -%}
+    {%- endif -%}
+{%- endfor -%}
+
+{# Theme #}
+{%- set theme_key = uuids.chapterUuid + '.' + uuids.ThemeUuid -%}
+{%- set ThemeMap = [] -%}
+
+{%- if theme_key in repliesMap and repliesMap[theme_key].value and 'value' in repliesMap[theme_key].value -%}
+    {%- for item in repliesMap[theme_key].value.value -%}
+        {%- do ThemeMap.append(item) -%}
+    {%- endfor -%}
+{%- endif -%}
+
+{%- set valuesThemeMap = {} -%}
+
+{%- for key in ThemeMap -%}
+    {%- set full_key = theme_key + '.' + key + '.' + uuids.FinalThemeUuid -%}
+    {%- if full_key in repliesMap and repliesMap[full_key].value and 'value' in repliesMap[full_key].value -%}
+        {%- do valuesThemeMap.update({key: repliesMap[full_key].value.value}) -%}
     {%- endif -%}
 {%- endfor -%}
 
@@ -30,13 +43,10 @@
 {%- set org_key = uuids.chapterUuid + '.' + uuids.GeneralOrganizationUuid + '.' + uuids.YesResponseOrganizationUuid + '.' + uuids.IndicateInformationOrganizationUuid -%}
 {%- set OrganizationMap = [] -%}
 
-{%- if org_key in repliesMap -%}
-    {%- set org_data = repliesMap[org_key] -%}
-    {%- if org_data.value and 'value' in org_data.value -%}
-        {%- for item in org_data.value.value -%}
-            {%- do OrganizationMap.append(item) -%}
-        {%- endfor -%}
-    {%- endif -%}
+{%- if org_key in repliesMap and repliesMap[org_key].value and 'value' in repliesMap[org_key].value -%}
+    {%- for item in repliesMap[org_key].value.value -%}
+        {%- do OrganizationMap.append(item) -%}
+    {%- endfor -%}
 {%- endif -%}
 
 {%- set valuesOrganizationMap = {} -%}
@@ -49,9 +59,10 @@
         {%- set entry_url = repliesMap[full_key_org_url] -%}
         {%- set entry_name = repliesMap[full_key_org_name] -%}
 
-        {%- if entry_url.value and 'value' in entry_url.value and entry_name.value and 'value' in entry_name.value -%}
-            {%- do valuesOrganizationMap.update({key: {"organization_name": entry_name.value.value, "organization_url": entry_url.value.value}}) -%}
-        {%- endif -%}
+        {%- do valuesOrganizationMap.update({key: {
+            "organization_name": entry_name.value.value if entry_name.value and 'value' in entry_name.value else '',
+            "organization_url": entry_url.value.value if entry_url.value and 'value' in entry_url.value else ''
+        }}) -%}
     {%- endif -%}
 {%- endfor -%}
 
@@ -59,32 +70,41 @@
 {%- set person_key = uuids.chapterUuid + '.' + uuids.GeneralPersonUuid + '.' + uuids.YesResponsePersonUuid + '.' + uuids.IndicateInformationPersonUuidUuid -%}
 {%- set PersonMap = [] -%}
 
-{%- if person_key in repliesMap -%}
-    {%- set person_data = repliesMap[person_key] -%}
-    {%- if person_data.value and 'value' in person_data.value -%}
-        {%- for item in person_data.value.value -%}
-            {%- do PersonMap.append(item) -%}
-        {%- endfor -%}
-    {%- endif -%}
+{%- if person_key in repliesMap and repliesMap[person_key].value and 'value' in repliesMap[person_key].value -%}
+    {%- for item in repliesMap[person_key].value.value -%}
+        {%- do PersonMap.append(item) -%}
+    {%- endfor -%}
 {%- endif -%}
 
 {%- set valuesPersonMap = {} -%}
 
 {%- for key in PersonMap -%}
-    {%- set full_key_person_name = person_key + '.' + key + '.' + uuids.PersonNameUuid -%}
     {%- set full_key_person_email = person_key + '.' + key + '.' + uuids.PersonEmailUuid -%}
     {%- set full_key_person_orcid = person_key + '.' + key + '.' + uuids.PersonORCIDUuid -%}
-
-    {%- if full_key_person_name in repliesMap and full_key_person_email in repliesMap and full_key_person_orcid in repliesMap -%}
-        {%- set entry_pname = repliesMap[full_key_person_name] -%}
+    
+    {%- if full_key_person_email in repliesMap and full_key_person_orcid in repliesMap -%}
         {%- set entry_pemail = repliesMap[full_key_person_email] -%}
         {%- set entry_porcid = repliesMap[full_key_person_orcid] -%}
+        
+        {%- set orcid_text = entry_porcid.value.value.value if entry_porcid.value.value and 'value' in entry_porcid.value.value else '' -%}
+        {%- set extracted_orcid_name = orcid_text -%}
 
-        {%- if entry_pname.value and 'value' in entry_pname.value and entry_pemail.value and 'value' in entry_pemail.value and entry_porcid.value and 'value' in entry_porcid.value -%}
-            {%- do valuesPersonMap.update({key: {"person_name": entry_pname.value.value, "person_email": entry_pemail.value.value, "person_orcid": entry_porcid.value.value}}) -%}
+        {%- if '**' in orcid_text -%}
+            {%- set start_index = orcid_text.find('**') + 2 -%}
+            {%- set end_index = orcid_text.find('**', start_index) if orcid_text.find('**', start_index) != -1 else orcid_text|length -%}
+            {%- set extracted_orcid_name = orcid_text[start_index:end_index] -%}
         {%- endif -%}
+
+        {%- do valuesPersonMap.update({key: {
+            "person_email": entry_pemail.value.value if entry_pemail.value and 'value' in entry_pemail.value else '',
+            "person_orcid_code": entry_porcid.value.value.id if entry_porcid.value.value and 'id' in entry_porcid.value.value else '',
+            "person_orcid_name": extracted_orcid_name
+        }}) -%}
     {%- endif -%}
 {%- endfor -%}
+
+
+
 
 {# Metric #}
 {%- set metric_key = uuids.chapterMetricUuid + '.' + uuids.IndicateInformationMetricUuid -%}
@@ -102,30 +122,36 @@
 {%- set valuesMetricMap = {} -%}
 
 {%- for key in MetricMap -%}
-    {%- set full_key_metric_name = metric_key + '.' + key + '.' + uuids.MetricnameUuid -%}
     {%- set full_key_metric_id = metric_key + '.' + key + '.' + uuids.MetricURLUuid -%}
 
-    {%- if full_key_metric_name in repliesMap and full_key_metric_id in repliesMap -%}
-        {%- set entry_metric_name = repliesMap[full_key_metric_name] -%}
+    {%- if full_key_metric_id in repliesMap -%}
         {%- set entry_metric_id = repliesMap[full_key_metric_id] -%}
+        {%- set metric_value = entry_metric_id.value.value.value if entry_metric_id.value and entry_metric_id.value.value and entry_metric_id.value.value.value else '' -%}
+        {%- set extracted_metric_name = metric_value -%}
 
-        {%- if entry_metric_name.value and 'value' in entry_metric_name.value and entry_metric_id.value and 'value' in entry_metric_id.value -%}
-            {%- do valuesMetricMap.update({key: {"metric_name": entry_metric_name.value.value, "metric_id": entry_metric_id.value.value}}) -%}
+        {%- if '**' in metric_value -%}
+            {%- set start_index = metric_value.find('**') + 2 -%}
+            {%- set end_index = metric_value.find('**', start_index) if metric_value.find('**', start_index) != -1 else metric_value|length -%}
+            {%- set extracted_metric_name = metric_value[start_index:end_index] -%}
         {%- endif -%}
+
+        {%- do valuesMetricMap.update({key: {
+            "metric_id": entry_metric_id.value.value.id if entry_metric_id.value and entry_metric_id.value.value and 'id' in entry_metric_id.value.value else '',
+            "metric_name": extracted_metric_name
+        }}) -%}
     {%- endif -%}
 {%- endfor -%}
 
-{# Render the final JSON output #}
-
+{# Render JSON output #}
 {%- set GeneralMap = {} -%}
 
 {%- set general_keys = {
-    "GUID": uuids.GUIDUuid,
     "Title": uuids.TitleUuid,
     "Description": uuids.DescriptionUuid,
     "Abbreviation": uuids.AbreviationQuestionUuid,
     "Homepage": uuids.HomepageUuid,
     "policyURL": uuids.PolicyURLUuid,
+    "Theme": uuids.ThemeUuid,
     "License": uuids.LicenseUuid,
     "Version": uuids.VersionUuid
 } -%}
@@ -135,16 +161,25 @@
     {%- if full_key in repliesMap -%}
         {%- set entry = repliesMap[full_key] -%}
         {%- if entry.value and 'value' in entry.value -%}
-            {%- do GeneralMap.update({key: entry.value.value}) -%}
+            {%- set value = entry.value.value -%}
+            {%- do GeneralMap.update({key: value}) -%}
+
+            {%- if key == "Title" -%}
+                {%- set stripped_title = value.replace(" ", "") -%}
+                {%- do GeneralMap.update({"TitleStripped": stripped_title}) -%}
+            {%- endif -%}
         {%- endif -%}
     {%- endif -%}
 {%- endfor -%}
 
+
 {%- do GeneralMap.update({
     "valuesKeywordMap": valuesKeywordMap,
+    "valuesThemeMap": valuesThemeMap,
     "valuesOrganizationMap": valuesOrganizationMap,
     "valuesPersonMap": valuesPersonMap,
-    "valuesMetricMap": valuesMetricMap
+    "valuesMetricMap": valuesMetricMap,
+    "all": ctx
 }) -%}
 
-{{ GeneralMap | tojson(4) }}
+{{ GeneralMap | default({}) | tojson(4) }}

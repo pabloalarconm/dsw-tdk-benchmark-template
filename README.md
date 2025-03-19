@@ -1,12 +1,21 @@
 # Benchmark-template
 
-DSW-TDK template for creating Benchmark using Knowledge model-based questionnaire.
+Jinja-based template for creating FAIR Benchmark in RDF using Knowledge model-based questionnaire.
+
+## Contributors
+* Pablo Alarcón-Moreno 
+    * ORCID: 0000-0001-5974-589X
+    * GitHub: @pabloalarconm
 
 ## Changelog
 
-### 0.1.42
+### 0.3.0
 
-- First complete template defined
+- FAIRsharing and ORCID API integration after OSTrials General Assembly
+
+### 0.2.0
+
+- First complete template defined and hosted in FAIR Wizard
 
 ## License
 
