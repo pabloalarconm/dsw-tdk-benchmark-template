@@ -1,6 +1,10 @@
-# Benchmark-template
+# FAIR-assessment-template
 
-Jinja-based template for creating FAIR Benchmark in RDF using Knowledge model-based questionnaire.
+**Jinja2-based template** for creating FAIR Assessment Components using a knowledge model-based questionnaire. It provides both:
+
+- **RDF templating**: following the [FTR](https://ostrails.github.io/FAIR_assessment_output_specification/release/0.0.1/index-en.html) model  
+- **JSON templating**: following the FAIRsharing API specification for registry creation.
+
 
 ## Contributors
 * Pablo Alarcón-Moreno 
@@ -8,6 +12,34 @@ Jinja-based template for creating FAIR Benchmark in RDF using Knowledge model-ba
     * GitHub: @pabloalarconm
 
 ## Changelog
+
+### 0.5.4
+
+- FAIR principles added for FAIRsharing JSON template
+
+### 0.5.3
+
+- Minor bugs in the RDF templating
+
+### 0.5.2
+
+- Minor bugs in the RDF templating
+
+### 0.5.1
+
+- Minor bugs in the RDF templating
+
+### 0.5.0
+
+- Expanded to cover all FAIR assessment components
+
+### 0.4.1
+
+- Issue-related to integer for FAIRsharing ids
+
+### 0.4.0
+
+- Fully FAIRsharing API integration
 
 ### 0.3.0
 

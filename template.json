@@ -1,9 +1,9 @@
 {
     "templateId": "benchmark-template",
     "organizationId": "ostrails.fair",
-    "version": "0.3.0",
-    "name": "Benchmark-template",
-    "description": "Jinja-based template for creating FAIR Benchmark in RDF using Knowledge model-based questionnaire.",
+    "version": "0.5.4",
+    "name": "FAIR-assessment-template",
+    "description": "Jinja2-based template for creating FAIR Assessment Components in RDF and JSON using Knowledge model-based questionnaire.",
     "license": "CC0",
     "metamodelVersion": 16,
     "allowedPackages": [

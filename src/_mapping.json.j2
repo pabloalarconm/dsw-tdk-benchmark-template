@@ -1,13 +1,19 @@
 {%- import "src/_uuids.j2" as uuids with context -%}
 {%- set repliesMap = ctx.questionnaire.replies -%}
 
-{# Keyword #}
+{# Keyword - Domain #}
+
 {%- set keyword_key = uuids.chapterUuid + '.' + uuids.GeneralKeywordUuid -%}
 {%- set KeyWordMap = [] -%}
 
-{%- if keyword_key in repliesMap and repliesMap[keyword_key].value and 'value' in repliesMap[keyword_key].value -%}
+{%- if keyword_key in repliesMap 
+      and repliesMap[keyword_key].value 
+      and 'value' in repliesMap[keyword_key].value 
+      and repliesMap[keyword_key].value.value -%}
     {%- for item in repliesMap[keyword_key].value.value -%}
-        {%- do KeyWordMap.append(item) -%}
+        {%- if item -%}
+            {%- do KeyWordMap.append(item) -%}
+        {%- endif -%}
     {%- endfor -%}
 {%- endif -%}
 
@@ -15,18 +21,41 @@
 
 {%- for key in KeyWordMap -%}
     {%- set full_key = keyword_key + '.' + key + '.' + uuids.FinalKeywordUuid -%}
-    {%- if full_key in repliesMap and repliesMap[full_key].value and 'value' in repliesMap[full_key].value -%}
-        {%- do valuesKeywordMap.update({key: repliesMap[full_key].value.value}) -%}
+    {%- if full_key in repliesMap 
+          and repliesMap[full_key].value 
+          and 'value' in repliesMap[full_key].value 
+          and repliesMap[full_key].value.value -%}
+        
+        {%- set raw_value = repliesMap[full_key].value.value.value -%}
+
+        {%- set parts = raw_value.split('\n') -%}
+        {%- set url = parts[0].replace('**', '') -%}
+        {%- set label = parts[1] if parts|length > 1 else '' -%}
+
+        {%- do valuesKeywordMap.update({
+            key: {
+                'id': repliesMap[full_key].value.value.id,
+                'iri': url,
+                'label': label
+            }
+        }) -%}
+
     {%- endif -%}
 {%- endfor -%}
 
-{# Theme #}
+{# Area of Knowledge - Subject #}
+
 {%- set theme_key = uuids.chapterUuid + '.' + uuids.ThemeUuid -%}
 {%- set ThemeMap = [] -%}
 
-{%- if theme_key in repliesMap and repliesMap[theme_key].value and 'value' in repliesMap[theme_key].value -%}
+{%- if theme_key in repliesMap 
+      and repliesMap[theme_key].value 
+      and 'value' in repliesMap[theme_key].value 
+      and repliesMap[theme_key].value.value -%}
     {%- for item in repliesMap[theme_key].value.value -%}
-        {%- do ThemeMap.append(item) -%}
+        {%- if item -%}
+            {%- do ThemeMap.append(item) -%}
+        {%- endif -%}
     {%- endfor -%}
 {%- endif -%}
 
@@ -34,39 +63,144 @@
 
 {%- for key in ThemeMap -%}
     {%- set full_key = theme_key + '.' + key + '.' + uuids.FinalThemeUuid -%}
-    {%- if full_key in repliesMap and repliesMap[full_key].value and 'value' in repliesMap[full_key].value -%}
-        {%- do valuesThemeMap.update({key: repliesMap[full_key].value.value}) -%}
+    {%- if full_key in repliesMap 
+          and repliesMap[full_key].value 
+          and 'value' in repliesMap[full_key].value 
+          and repliesMap[full_key].value.value -%}
+        
+        {%- set raw_value = repliesMap[full_key].value.value.value -%}
+
+        {%- set parts = raw_value.split('\n') -%}
+        {%- set url = parts[0].replace('**', '') -%}
+        {%- set label = parts[1] if parts|length > 1 else '' -%}
+
+        {%- do valuesThemeMap.update({
+            key: {
+                'id': repliesMap[full_key].value.value.id,
+                'iri': url,
+                'label': label
+            }
+        }) -%}
+
     {%- endif -%}
 {%- endfor -%}
 
-{# Organization #}
-{%- set org_key = uuids.chapterUuid + '.' + uuids.GeneralOrganizationUuid + '.' + uuids.YesResponseOrganizationUuid + '.' + uuids.IndicateInformationOrganizationUuid -%}
-{%- set OrganizationMap = [] -%}
+{# Tool #}
 
-{%- if org_key in repliesMap and repliesMap[org_key].value and 'value' in repliesMap[org_key].value -%}
-    {%- for item in repliesMap[org_key].value.value -%}
-        {%- do OrganizationMap.append(item) -%}
+{%- set tool_key = uuids.chapterUuid + '.' + uuids.IndicateToolUuid -%}
+{%- set ToolMap = [] -%}
+
+{%- if tool_key in repliesMap and repliesMap[tool_key].value and 'value' in repliesMap[tool_key].value -%}
+    {%- for item in repliesMap[tool_key].value.value -%}
+        {%- do ToolMap.append(item) -%}
     {%- endfor -%}
 {%- endif -%}
 
-{%- set valuesOrganizationMap = {} -%}
+{%- set valuesToolMap = {} -%}
 
-{%- for key in OrganizationMap -%}
-    {%- set full_key_org_url = org_key + '.' + key + '.' + uuids.OrganizationURLUuid -%}
-    {%- set full_key_org_name = org_key + '.' + key + '.' + uuids.OrganizationNameUuid -%}
-    
-    {%- if full_key_org_url in repliesMap and full_key_org_name in repliesMap -%}
-        {%- set entry_url = repliesMap[full_key_org_url] -%}
-        {%- set entry_name = repliesMap[full_key_org_name] -%}
+{%- for key in ToolMap -%}
+  {%- set full_key_name = tool_key + '.' + key + '.' + uuids.NameToolUuid -%}
+  {%- set full_key_url = tool_key + '.' + key + '.' + uuids.URLToolUuid -%}
 
-        {%- do valuesOrganizationMap.update({key: {
-            "organization_name": entry_name.value.value if entry_name.value and 'value' in entry_name.value else '',
-            "organization_url": entry_url.value.value if entry_url.value and 'value' in entry_url.value else ''
-        }}) -%}
-    {%- endif -%}
+  {%- if full_key_url in repliesMap and repliesMap[full_key_url].value and 'value' in repliesMap[full_key_url].value
+        and full_key_name in repliesMap and repliesMap[full_key_name].value and 'value' in repliesMap[full_key_name].value -%}
+      {%- do valuesToolMap.update({
+          key: {
+              'url': repliesMap[full_key_url].value.value,
+              'name': repliesMap[full_key_name].value.value
+          }
+      }) -%}
+  {%- endif -%}
 {%- endfor -%}
 
+
+{# Organisation #}
+
+{%- set valuesOrganisationMap = {} -%}
+
+{%- set org_key = uuids.chapterUuid ~ '.' ~ uuids.GeneralOrganisationUuid ~ '.' ~ uuids.YesResponseOrganisationUuid ~ '.' ~ uuids.ElsewhereOrganisationUuid -%}
+{%- set full_key_org_fs = org_key ~ '.' ~ uuids.YesFSOrganisationUuid ~ '.' ~ uuids.OrganisationFSUuid -%}
+{%- set full_key_org_ror = org_key ~ '.' ~ uuids.NoFSbutRORwhereOrganisationUuid ~ '.' ~ uuids.OrganisationRORUuid -%}
+{%- set full_key_org_ror_orgtype = org_key ~ '.' ~ uuids.NoFSbutRORwhereOrganisationUuid ~ '.' ~ uuids.TypeofInstitutionUuid -%}
+{%- set full_key_org_ror_location = org_key ~ '.' ~ uuids.NoFSbutRORwhereOrganisationUuid ~ '.' ~ uuids.CountryLocatedUuid -%}
+{%- set full_key_org_ror_url = org_key ~ '.' ~ uuids.NoFSbutRORwhereOrganisationUuid ~ '.' ~ uuids.URLOrganisationUuid -%}
+
+{# -> Caso FS Repository #}
+{%- if full_key_org_fs in repliesMap -%}
+  {%- set entry = repliesMap[full_key_org_fs] -%}
+  {%- if entry.value and entry.value.value and entry.value.value.value -%}
+    {%- set raw = entry.value.value.value -%}
+    {%- if '**' in raw -%}
+      {%- set parts = raw.split('\n') -%}
+      {%- set url   = parts[0].replace('**','') -%}
+      {%- set label = parts[1] if parts|length > 1 else '' -%}
+      {%- do valuesOrganisationMap.update({
+          "id": (entry.value.value.id | int) if entry.value.value.id is defined else None,
+          "url": url,
+          "label": label
+        }) -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+
+{# -> Caso ROR #}
+{%- if full_key_org_ror in repliesMap -%}
+  {%- set entry_ror = repliesMap[full_key_org_ror] -%}
+  {%- if entry_ror.value and entry_ror.value.value and entry_ror.value.value.value -%}
+    {%- set raw = entry_ror.value.value.value -%}
+    {%- if '**' in raw -%}
+      {%- set name_start = raw.find('**') + 2 -%}
+      {%- set name_end   = raw.find('**', name_start) if raw.find('**', name_start) != -1 else raw|length -%}
+      {%- set ror_name   = raw[name_start:name_end] -%}
+      {%- set ror_link   = entry_ror.value.value.id if entry_ror.value.value.id is defined else '' -%}
+      {%- do valuesOrganisationMap.update({
+          "url": ror_link,
+          "label": ror_name
+        }) -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+
+{# -> ROR country #}
+{%- if full_key_org_ror_location in repliesMap -%}
+  {%- set entry_loc = repliesMap[full_key_org_ror_location] -%}
+  {%- if entry_loc.value and entry_loc.value.value and entry_loc.value.value.id is defined -%}
+    {%- do valuesOrganisationMap.update({
+         "country_ids": [(entry_loc.value.value.id | int)]
+      }) -%}
+  {%- endif -%}
+{%- endif -%}
+
+{# -> ROR homepage #}
+{%- if full_key_org_ror_url in repliesMap -%}
+  {%- set entry_url = repliesMap[full_key_org_ror_url] -%}
+  {%- if entry_url.value and entry_url.value.value is defined -%}
+    {%- do valuesOrganisationMap.update({
+         "homepage": entry_url.value.value
+      }) -%}
+  {%- endif -%}
+{%- endif -%}
+
+{# -> ROR orgtype ids #}
+{%- if full_key_org_ror_orgtype in repliesMap -%}
+  {%- set entry_type = repliesMap[full_key_org_ror_orgtype] -%}
+  {%- if entry_type.value and entry_type.value.value -%}
+    {%- set all_types = {
+         uuids.LabUuid: 5, uuids.ConsortiumUuid: 7, uuids.CompanyUuid: 6,
+         uuids.GovernmentBodyUuid: 1, uuids.CharitableFoundationUuid: 2,
+         uuids.ResearchInstituteUuid: 4, uuids.UniversityUuid: 3 } -%}
+    {%- set ids = [] -%}
+    {%- for t in entry_type.value.value -%}
+      {%- if t in all_types -%}
+        {%- do ids.append(all_types[t]) -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- do valuesOrganisationMap.update({"organisation_type_ids": ids}) -%}
+  {%- endif -%}
+{%- endif -%}
+
 {# Responsable Person #}
+
 {%- set person_key = uuids.chapterUuid + '.' + uuids.GeneralPersonUuid + '.' + uuids.YesResponsePersonUuid + '.' + uuids.IndicateInformationPersonUuidUuid -%}
 {%- set PersonMap = [] -%}
 
@@ -103,11 +237,9 @@
     {%- endif -%}
 {%- endfor -%}
 
-
-
-
 {# Metric #}
-{%- set metric_key = uuids.chapterMetricUuid + '.' + uuids.IndicateInformationMetricUuid -%}
+
+{%- set metric_key = uuids.chapterUuid + '.' + uuids.IndicateInformationMetricUuid -%}
 {%- set MetricMap = [] -%}
 
 {%- if metric_key in repliesMap -%}
@@ -122,27 +254,282 @@
 {%- set valuesMetricMap = {} -%}
 
 {%- for key in MetricMap -%}
-    {%- set full_key_metric_id = metric_key + '.' + key + '.' + uuids.MetricURLUuid -%}
+  {%- set full_id_key = metric_key ~ '.' ~ key ~ '.' ~ uuids.MetricURLUuid -%}
+  {%- if full_id_key in repliesMap -%}
+    {%- set entry = repliesMap[full_id_key] -%}
+    {%- set raw = entry.value.value.value
+                  if entry.value and entry.value.value and entry.value.value.value is defined
+                  else '' -%}
 
-    {%- if full_key_metric_id in repliesMap -%}
-        {%- set entry_metric_id = repliesMap[full_key_metric_id] -%}
-        {%- set metric_value = entry_metric_id.value.value.value if entry_metric_id.value and entry_metric_id.value.value and entry_metric_id.value.value.value else '' -%}
-        {%- set extracted_metric_name = metric_value -%}
-
-        {%- if '**' in metric_value -%}
-            {%- set start_index = metric_value.find('**') + 2 -%}
-            {%- set end_index = metric_value.find('**', start_index) if metric_value.find('**', start_index) != -1 else metric_value|length -%}
-            {%- set extracted_metric_name = metric_value[start_index:end_index] -%}
-        {%- endif -%}
-
-        {%- do valuesMetricMap.update({key: {
-            "metric_id": entry_metric_id.value.value.id if entry_metric_id.value and entry_metric_id.value.value and 'id' in entry_metric_id.value.value else '',
-            "metric_name": extracted_metric_name
-        }}) -%}
+    {%- set extracted = raw -%}
+    {%- if '**' in raw -%}
+      {%- set start = raw.find('**') + 2 -%}
+      {%- set end   = raw.find('**', start) if raw.find('**', start) != -1 else raw|length -%}
+      {%- set extracted = raw[start:end] -%}
     {%- endif -%}
+
+    {%- set parts = extracted.split(';') -%}
+    {%- set mname = parts[0].strip() -%}
+    {%- set mdoi  = parts[1].strip() if parts|length > 1 else '' -%}
+
+    {%- set mid = (entry.value.value.id | int)
+                  if entry.value and entry.value.value and entry.value.value.id is defined
+                  else '' -%}
+
+    {%- do valuesMetricMap.update({
+        key: {
+          "metric_id": mid,
+          "metric_name": mname,
+          "metric_doi": mdoi
+        }
+    }) -%}
+  {%- endif -%}
 {%- endfor -%}
 
-{# Render JSON output #}
+{# Digital Object type #}
+
+{%- set valuesDigitalObject = [] -%}
+{%- set full_key_DO = uuids.chapterUuid + '.' + uuids.IndicateDOUuid -%}
+
+{%- set all_options = {
+    uuids.DatasetUuid: {
+                    "id": 5,
+                    "iri": "https://schema.org/Dataset",
+                    "label": "dataset"
+                },
+    uuids.DMPUuid:{
+                    "id": 8,
+                    "iri": "https://vocabularies.coar-repositories.org/resource_types/c_ab20/",
+                    "label": "data management plan"
+                },
+    uuids.DocumentUuid: {
+                    "id": 2,
+                    "iri": "https://schema.org/DigitalDocument",
+                    "label": "document"
+                },
+    uuids.ImageUuid: {
+                    "id": 6,
+                    "iri": "https://schema.org/ImageObject",
+                    "label": "image"
+                },
+    uuids.MaterialUuid: {
+                    "id": 14,
+                    "iri": "https://schema.org/IndividualProduct",
+                    "label": "physical object/material"
+                },
+    uuids.ModelUuid: {
+                    "id": 7,
+                    "iri": "http://semanticscience.org/resource/SIO_000510",
+                    "label": "model"
+                },
+    uuids.MultimediaUuid: {
+                    "id": 1,
+                    "iri": "https://schema.org/MediaObject",
+                    "label": "multimedia"
+                },
+    uuids.ObjectTypeNotFoundUuid: {
+                    "id": 13,
+                    "iri": "https://fairsharing.org/FAIRsharing.NFOBJT",
+                    "label": "object type not found"
+                },
+    uuids.OtherObjectTypeUuid: {
+                    "id": 11,
+                    "iri": "https://vocabularies.coar-repositories.org/resource_types/c_1843/",
+                    "label": "other object type"
+                },
+    uuids.ProtocolWorkflowUuid: {
+                    "id": 10,
+                    "iri": "http://purl.obolibrary.org/obo/NCIT_C42753",
+                    "label": "protocol or workflow"
+                },
+    uuids.PublicationUuid: {
+                    "id": 3,
+                    "iri": "https://schema.org/ScholarlyArticle",
+                    "label": "publication"
+                },
+    uuids.SoftwareApplicationUuid: {
+                    "id": 16,
+                    "iri": "https://schema.org/SoftwareApplication",
+                    "label": "software application"
+                },
+    uuids.SoftwareSourceCodeUuid: {
+                    "id": 15,
+                    "iri": "https://schema.org/SoftwareSourceCode",
+                    "label": "software source code"
+                },
+    uuids.SurveyUuid: {
+                    "id": 4,
+                    "iri": "http://purl.org/coar/resource_type/NHD0-W6SY",
+                    "label": "questionnaire/survey"
+                },
+    uuids.TerminologyArtifactUuid: {
+                    "id": 9,
+                    "iri": "https://schema.org/DefinedTermSet",
+                    "label": "terminology artifact"
+                },
+    uuids.ObjectTypeAgnostic: {
+                    "id": 12,
+                    "iri": "https://schema.org/CreativeWork",
+                    "label": "object type agnostic"
+                }
+} -%}
+
+{%- if full_key_DO in repliesMap and 'value' in repliesMap[full_key_DO] -%}
+  {%- for do in repliesMap[full_key_DO].value.value -%}
+      {%- for key, val in all_options.items() -%}
+          {%- if do == key -%}
+              {%- do valuesDigitalObject.append(val) -%}
+          {%- endif -%}
+      {%- endfor -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{# Tags #}
+
+{% set tag = ctx.knowledgeModel.entities.tags.keys() | list | first %}
+{% if tag == uuids.TagBenchmarkUuid %}
+  {% set value_tag = 16 %}
+  {% set name_tag = "benchmark" %}
+{% elif tag == uuids.TagMetricUuid %}
+  {% set value_tag = 5 %}
+  {% set name_tag = "metric" %}
+{% elif tag == uuids.TagTestUuid %}
+  {% set value_tag = 0 %}
+  {% set name_tag = "test" %}
+{% elif tag == uuids.TagAlgorithmUuid %}
+  {% set value_tag = 0 %}
+  {% set name_tag = "algorithm" %}
+{% else %}
+  {% set value_tag = "" %}
+  {% set name_tag = "" %}
+{% endif %}
+
+{% set valuesTagMap = {} %}
+{%- do valuesTagMap.update({"id":value_tag,"name":name_tag }) -%}
+
+{%- set valuesFAIRPrinciples = [] -%}
+{%- set full_key_FP = uuids.chapterUuid + '.' + uuids.IndicatePrinciplesUuid -%}
+
+{%- set all_options_FP = {
+  uuids.FAIRPrinciples_FUuid : {
+      "id": 6269,
+      "name": "FAIR Principles - Findable",
+      "doi": "10.25504/FAIRsharing.05f7cb"
+  },
+  uuids.FAIRPrinciples_AUuid : {
+      "id": 6270,
+      "name": "FAIR Principles - Accessible",
+      "doi": "10.25504/FAIRsharing.4293fa"
+  },
+  uuids.FAIRPrinciples_IUuid : {
+      "id": 6271,
+      "name": "FAIR Principles - Interoperable",
+      "doi": "10.25504/FAIRsharing.dea200"
+  },
+  uuids.FAIRPrinciples_RUuid : {
+      "id": 6272,
+      "name": "FAIR Principles - Reusable",
+      "doi": "10.25504/FAIRsharing.44faf0"
+  },
+  uuids.FAIRPrinciples_F1Uuid : {
+      "id": 6273,
+      "name": "FAIR Principles F1: (Meta)data are assigned globally unique and persistent identifiers",
+      "doi": "10.25504/FAIRsharing.a2cea7"
+  },
+  uuids.FAIRPrinciples_F2Uuid : {
+      "id": 6276,
+      "name": "FAIR Principles F2: Data are described with rich metadata",
+      "doi": "10.25504/FAIRsharing.e05e98"
+  },
+  uuids.FAIRPrinciples_F3Uuid : {
+      "id": 6277,
+      "name": "FAIR Principles F3: Metadata clearly and explicitly include the identifier of the data they describe",
+      "doi": "10.25504/FAIRsharing.820324"
+  },
+  uuids.FAIRPrinciples_F4Uuid : {
+      "id": 6278,
+      "name": "FAIR Principles F4: (meta)data are registered or indexed in a searchable resource",
+      "doi": "10.25504/FAIRsharing.0c0d21"
+  },
+  uuids.FAIRPrinciples_A1Uuid : {
+      "id": 6293,
+      "name": "FAIR Principles A1: (meta)data are retrievable by their identifier using a standardized communications protocol",
+      "doi": "10.25504/FAIRsharing.7014eb"
+  },
+  uuids.FAIRPrinciples_A2Uuid : {
+      "id": 6296,
+      "name": "FAIR Principles A2: metadata are accessible, even when the data are no longer available",
+      "doi": "10.25504/FAIRsharing.7c4d7f"
+  },
+  uuids.FAIRPrinciples_I2Uuid : {
+      "id": 6298,
+      "name": "FAIR Principles I2: (meta)data use vocabularies that follow FAIR principles",
+      "doi": "10.25504/FAIRsharing.96d4af"
+  },
+  uuids.FAIRPrinciples_I1Uuid : {
+      "id": 6297,
+      "name": "FAIR Principles I1: (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation",
+      "doi": "10.25504/FAIRsharing.ec5648"
+  },
+  uuids.FAIRPrinciples_I3Uuid : {
+      "id": 6299,
+      "name": "FAIR Principles I3: (meta)data include qualified references to other (meta)data",
+      "doi": "10.25504/FAIRsharing.ae22b8"
+  },
+  uuids.FAIRPrinciples_R1Uuid : {
+      "id": 6312,
+      "name": "FAIR Principles R1: meta(data) are richly described with a plurality of accurate and relevant attributes",
+      "doi": "10.25504/FAIRsharing.821487"
+  },
+  uuids.FAIRPrinciples_F1GUIDUuid : {
+      "id": 6274,
+      "name": "FAIR Principles F1-GUID: (Meta)data are assigned globally unique identifiers",
+      "doi": "10.25504/FAIRsharing.b7f1ab"
+  },
+  uuids.FAIRPrinciples_F1PIDUuid : {
+      "id": 6275,
+      "name": "FAIR Principles F1-PID: (Meta)data are assigned persistent identifiers",
+      "doi": "10.25504/FAIRsharing.e226cb"
+  },
+  uuids.FAIRPrinciples_A1_1Uuid : {
+      "id": 6294,
+      "name": "FAIR Principles A1.1: the protocol is open, free, and universally implementable",
+      "doi": "10.25504/FAIRsharing.7612c1"
+  },
+  uuids.FAIRPrinciples_A1_2Uuid : {
+      "id": 6295,
+      "name": "FAIR Principles A1.2: the protocol allows for an authentication and authorization procedure, where necessary",
+      "doi": "10.25504/FAIRsharing.8e0027"
+  },
+  uuids.FAIRPrinciples_R1_2Uuid : {
+      "id": 6313,
+      "name": "FAIR Principles R1.2: (meta)data are associated with detailed provenance",
+      "doi": "10.25504/FAIRsharing.3e9860"
+  },
+  uuids.FAIRPrinciples_R1_3Uuid : {
+      "id": 6314,
+      "name": "FAIR Principles R1.3: (meta)data meet domain-relevant community standards",
+      "doi": "10.25504/FAIRsharing.87d197"
+  },
+  uuids.FAIRPrinciples_R1_1Uuid : {
+      "id": 6043,
+      "name": "FAIR Principles R1.1: (Meta)data are released with a clear and accessible data usage license",
+      "doi": "10.25504/FAIRsharing.aff99f"
+  }
+}-%}
+
+{%- if full_key_FP in repliesMap and 'value' in repliesMap[full_key_FP] -%}
+  {%- for do in repliesMap[full_key_FP].value.value -%}
+      {%- for key, val in all_options_FP.items() -%}
+          {%- if do == key -%}
+              {%- do valuesFAIRPrinciples.append(val) -%}
+          {%- endif -%}
+      {%- endfor -%}
+  {%- endfor -%}
+{%- endif -%}
+
+
+{# Render Generic JSON output #}
 {%- set GeneralMap = {} -%}
 
 {%- set general_keys = {
@@ -150,10 +537,12 @@
     "Description": uuids.DescriptionUuid,
     "Abbreviation": uuids.AbreviationQuestionUuid,
     "Homepage": uuids.HomepageUuid,
-    "policyURL": uuids.PolicyURLUuid,
-    "Theme": uuids.ThemeUuid,
     "License": uuids.LicenseUuid,
-    "Version": uuids.VersionUuid
+    "Version": uuids.VersionUuid,
+    "VersionNotes": uuids.VersionNotesUuid,
+    "EndpointURL": uuids.EndpointURLUuid,
+    "EndpointURLDescription": uuids.EndpointURLDescriptionUuid,
+    "CodeRepository": uuids.RepoUuid
 } -%}
 
 {%- for key, uuid in general_keys.items() -%}
@@ -172,14 +561,15 @@
     {%- endif -%}
 {%- endfor -%}
 
-
 {%- do GeneralMap.update({
     "valuesKeywordMap": valuesKeywordMap,
     "valuesThemeMap": valuesThemeMap,
-    "valuesOrganizationMap": valuesOrganizationMap,
+    "valuesToolMap" : valuesToolMap,
+    "valuesOrganisationMap": valuesOrganisationMap,
     "valuesPersonMap": valuesPersonMap,
     "valuesMetricMap": valuesMetricMap,
+    "valuesDigitalObject": valuesDigitalObject,
+    "valuesTagMap": valuesTagMap,
+    "valuesFAIRPrinciples": valuesFAIRPrinciples,
     "all": ctx
 }) -%}
-
-{{ GeneralMap | default({}) | tojson(4) }}

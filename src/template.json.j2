@@ -1,178 +1,108 @@
-{%- import "src/_uuids.j2" as uuids with context -%}
-{%- set repliesMap = ctx.questionnaire.replies -%}
+{%- import "src/_mapping.json.j2" as map with context -%}
 
-{# Keyword #}
-{%- set keyword_key = uuids.chapterUuid + '.' + uuids.GeneralKeywordUuid -%}
-{%- set KeyWordMap = [] -%}
+{# --- Final FAIRsharing-compatible JSON output --- #}
+{%- set fairsharing_record = {} -%}
 
-{%- if keyword_key in repliesMap and repliesMap[keyword_key].value and 'value' in repliesMap[keyword_key].value -%}
-    {%- for item in repliesMap[keyword_key].value.value -%}
-        {%- do KeyWordMap.append(item) -%}
-    {%- endfor -%}
-{%- endif -%}
-
-{%- set valuesKeywordMap = {} -%}
-
-{%- for key in KeyWordMap -%}
-    {%- set full_key = keyword_key + '.' + key + '.' + uuids.FinalKeywordUuid -%}
-    {%- if full_key in repliesMap and repliesMap[full_key].value and 'value' in repliesMap[full_key].value -%}
-        {%- do valuesKeywordMap.update({key: repliesMap[full_key].value.value}) -%}
-    {%- endif -%}
-{%- endfor -%}
-
-{# Theme #}
-{%- set theme_key = uuids.chapterUuid + '.' + uuids.ThemeUuid -%}
-{%- set ThemeMap = [] -%}
-
-{%- if theme_key in repliesMap and repliesMap[theme_key].value and 'value' in repliesMap[theme_key].value -%}
-    {%- for item in repliesMap[theme_key].value.value -%}
-        {%- do ThemeMap.append(item) -%}
-    {%- endfor -%}
-{%- endif -%}
-
-{%- set valuesThemeMap = {} -%}
-
-{%- for key in ThemeMap -%}
-    {%- set full_key = theme_key + '.' + key + '.' + uuids.FinalThemeUuid -%}
-    {%- if full_key in repliesMap and repliesMap[full_key].value and 'value' in repliesMap[full_key].value -%}
-        {%- do valuesThemeMap.update({key: repliesMap[full_key].value.value}) -%}
-    {%- endif -%}
-{%- endfor -%}
-
-{# Organization #}
-{%- set org_key = uuids.chapterUuid + '.' + uuids.GeneralOrganizationUuid + '.' + uuids.YesResponseOrganizationUuid + '.' + uuids.IndicateInformationOrganizationUuid -%}
-{%- set OrganizationMap = [] -%}
-
-{%- if org_key in repliesMap and repliesMap[org_key].value and 'value' in repliesMap[org_key].value -%}
-    {%- for item in repliesMap[org_key].value.value -%}
-        {%- do OrganizationMap.append(item) -%}
-    {%- endfor -%}
-{%- endif -%}
-
-{%- set valuesOrganizationMap = {} -%}
-
-{%- for key in OrganizationMap -%}
-    {%- set full_key_org_url = org_key + '.' + key + '.' + uuids.OrganizationURLUuid -%}
-    {%- set full_key_org_name = org_key + '.' + key + '.' + uuids.OrganizationNameUuid -%}
-    
-    {%- if full_key_org_url in repliesMap and full_key_org_name in repliesMap -%}
-        {%- set entry_url = repliesMap[full_key_org_url] -%}
-        {%- set entry_name = repliesMap[full_key_org_name] -%}
-
-        {%- do valuesOrganizationMap.update({key: {
-            "organization_name": entry_name.value.value if entry_name.value and 'value' in entry_name.value else '',
-            "organization_url": entry_url.value.value if entry_url.value and 'value' in entry_url.value else ''
-        }}) -%}
-    {%- endif -%}
-{%- endfor -%}
-
-{# Responsable Person #}
-{%- set person_key = uuids.chapterUuid + '.' + uuids.GeneralPersonUuid + '.' + uuids.YesResponsePersonUuid + '.' + uuids.IndicateInformationPersonUuidUuid -%}
-{%- set PersonMap = [] -%}
-
-{%- if person_key in repliesMap and repliesMap[person_key].value and 'value' in repliesMap[person_key].value -%}
-    {%- for item in repliesMap[person_key].value.value -%}
-        {%- do PersonMap.append(item) -%}
-    {%- endfor -%}
-{%- endif -%}
-
-{%- set valuesPersonMap = {} -%}
-
-{%- for key in PersonMap -%}
-    {%- set full_key_person_email = person_key + '.' + key + '.' + uuids.PersonEmailUuid -%}
-    {%- set full_key_person_orcid = person_key + '.' + key + '.' + uuids.PersonORCIDUuid -%}
-    
-    {%- if full_key_person_email in repliesMap and full_key_person_orcid in repliesMap -%}
-        {%- set entry_pemail = repliesMap[full_key_person_email] -%}
-        {%- set entry_porcid = repliesMap[full_key_person_orcid] -%}
-        
-        {%- set orcid_text = entry_porcid.value.value.value if entry_porcid.value.value and 'value' in entry_porcid.value.value else '' -%}
-        {%- set extracted_orcid_name = orcid_text -%}
-
-        {%- if '**' in orcid_text -%}
-            {%- set start_index = orcid_text.find('**') + 2 -%}
-            {%- set end_index = orcid_text.find('**', start_index) if orcid_text.find('**', start_index) != -1 else orcid_text|length -%}
-            {%- set extracted_orcid_name = orcid_text[start_index:end_index] -%}
-        {%- endif -%}
-
-        {%- do valuesPersonMap.update({key: {
-            "person_email": entry_pemail.value.value if entry_pemail.value and 'value' in entry_pemail.value else '',
-            "person_orcid_code": entry_porcid.value.value.id if entry_porcid.value.value and 'id' in entry_porcid.value.value else '',
-            "person_orcid_name": extracted_orcid_name
-        }}) -%}
-    {%- endif -%}
-{%- endfor -%}
-
-
-
-
-{# Metric #}
-{%- set metric_key = uuids.chapterMetricUuid + '.' + uuids.IndicateInformationMetricUuid -%}
-{%- set MetricMap = [] -%}
-
-{%- if metric_key in repliesMap -%}
-    {%- set metric_data = repliesMap[metric_key] -%}
-    {%- if metric_data.value and 'value' in metric_data.value -%}
-        {%- for item in metric_data.value.value -%}
-            {%- do MetricMap.append(item) -%}
-        {%- endfor -%}
-    {%- endif -%}
-{%- endif -%}
-
-{%- set valuesMetricMap = {} -%}
-
-{%- for key in MetricMap -%}
-    {%- set full_key_metric_id = metric_key + '.' + key + '.' + uuids.MetricURLUuid -%}
-
-    {%- if full_key_metric_id in repliesMap -%}
-        {%- set entry_metric_id = repliesMap[full_key_metric_id] -%}
-        {%- set metric_value = entry_metric_id.value.value.value if entry_metric_id.value and entry_metric_id.value.value and entry_metric_id.value.value.value else '' -%}
-        {%- set extracted_metric_name = metric_value -%}
-
-        {%- if '**' in metric_value -%}
-            {%- set start_index = metric_value.find('**') + 2 -%}
-            {%- set end_index = metric_value.find('**', start_index) if metric_value.find('**', start_index) != -1 else metric_value|length -%}
-            {%- set extracted_metric_name = metric_value[start_index:end_index] -%}
-        {%- endif -%}
-
-        {%- do valuesMetricMap.update({key: {
-            "metric_id": entry_metric_id.value.value.id if entry_metric_id.value and entry_metric_id.value.value and 'id' in entry_metric_id.value.value else '',
-            "metric_name": extracted_metric_name
-        }}) -%}
-    {%- endif -%}
-{%- endfor -%}
-
-{# Render JSON output #}
-{%- set GeneralMap = {} -%}
-
-{%- set general_keys = {
-    "Title": uuids.TitleUuid,
-    "Description": uuids.DescriptionUuid,
-    "Abbreviation": uuids.AbreviationQuestionUuid,
-    "Homepage": uuids.HomepageUuid,
-    "policyURL": uuids.PolicyURLUuid,
-    "License": uuids.LicenseUuid,
-    "Version": uuids.VersionUuid
+{%- set metadata = {
+    "name": map.GeneralMap["Title"] if "Title" in map.GeneralMap else "",
+    "abbreviation": map.GeneralMap["Abbreviation"] if "Abbreviation" in map.GeneralMap else "",
+    "description": map.GeneralMap["Description"] if "Description" in map.GeneralMap else "",
+    "homepage": "https://fairsharing.org",
+    "contacts": [],
+    "associated_tools":[]
 } -%}
 
-{%- for key, uuid in general_keys.items() -%}
-    {%- set full_key = uuids.chapterUuid + '.' + uuid -%}
-    {%- if full_key in repliesMap -%}
-        {%- set entry = repliesMap[full_key] -%}
-        {%- if entry.value and 'value' in entry.value -%}
-            {%- do GeneralMap.update({key: entry.value.value}) -%}
-        {%- endif -%}
-    {%- endif -%}
+{# Tool #}
+{%- for key, val in map.GeneralMap.valuesToolMap.items() -%}
+  {%- do metadata.associated_tools.append({
+    "name": val["name"],
+    "url": val["url"]
+  }) -%}
 {%- endfor -%}
 
+{# Person #}
+{%- for key, val in map.GeneralMap.valuesPersonMap.items() -%}
+  {%- do metadata.contacts.append({
+    "contact_name": val["person_orcid_name"],
+    "contact_orcid": val["person_orcid_code"],
+    "contact_email": val["person_email"]
+  }) -%}
+{%- endfor -%}
 
-{%- do GeneralMap.update({
-    "valuesKeywordMap": valuesKeywordMap,
-    "valuesThemeMap": valuesThemeMap,
-    "valuesOrganizationMap": valuesOrganizationMap,
-    "valuesPersonMap": valuesPersonMap,
-    "valuesMetricMap": valuesMetricMap,
-    "all": ctx
-}) -%}
+{# Metric and FAIR principles #}
+{%- set record_associations_attributes = [] -%}
+{%- for key, val in map.GeneralMap.valuesMetricMap.items() -%}
+  {%- if val["metric_id"] -%}
+    {%- do record_associations_attributes.append({
+      "linked_record_id": val["metric_id"],
+      "record_assoc_label_id": 14
+    }) -%}
+  {%- endif -%}
+{%- endfor -%}
 
-{{ GeneralMap | default({}) | tojson(4) }}
+{%- for item in map.GeneralMap.valuesFAIRPrinciples -%}
+  {%- if item.id -%}
+    {%- do record_associations_attributes.append({
+      "linked_record_id": item.id,
+      "record_assoc_label_id": 13
+    }) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{#Organisation#}
+{%- set organisation_links_attributes = [] -%}
+
+{%- if "id" in map.GeneralMap.valuesOrganisationMap -%}
+  {%- do organisation_links_attributes.append({
+      "relation": 'maintains',
+      "is_lead": true,
+      "organisation_id":map.GeneralMap.valuesOrganisationMap.id}) -%}
+
+{% elif "url" in map.GeneralMap.valuesOrganisationMap and "id" not in map.GeneralMap.valuesOrganisationMap%}
+  {%- do organisation_links_attributes.append({
+      "relation": 'maintains',
+      "is_lead": true,
+      "organisation_attributes":{
+                "organisation_type_ids": map.GeneralMap.valuesOrganisationMap.organisation_type_ids | default([]),
+                "name": map.GeneralMap.valuesOrganisationMap.label | default(""),
+                "homepage": map.GeneralMap.valuesOrganisationMap.homepage | default(""),
+                "country_ids": map.GeneralMap.valuesOrganisationMap.country_ids | default([]),
+                "ror_link": map.GeneralMap.valuesOrganisationMap.url | default("") }}) -%}
+
+{% endif %}
+
+{# Area of Knowledge - Subject #}
+{%- set subject_ids = [] -%}
+{%- for key, val in map.GeneralMap.valuesThemeMap.items() -%}
+  {%- do subject_ids.append(val["id"] | int) -%}
+{%- endfor -%}
+
+{# Keyword - Domain #}
+{%- set domain_ids = [] -%}
+{%- for key, val in map.GeneralMap.valuesKeywordMap.items() -%}
+  {%- do domain_ids.append(val["id"] | int) -%}
+{%- endfor -%}
+
+{#Digital Object type #}
+{%- set digital_objects_ids = [] -%}
+{%- for item in map.GeneralMap.valuesDigitalObject -%}
+  {%- if item.id is defined -%}
+    {%- do digital_objects_ids.append(item.id) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- set fairsharing_record = {
+  "fairsharing_record": {
+    "metadata": metadata,
+    "record_type_id": map.GeneralMap.valuesTagMap.id,
+    "subject_ids": subject_ids,
+    "domain_ids": domain_ids,
+    "record_associations_attributes":record_associations_attributes,
+    "object_type_ids": digital_objects_ids,
+    "organisation_links_attributes": organisation_links_attributes
+  }
+} -%}
+
+{#{{ map.GeneralMap | default({}) |tojson(4) }}#}
+
+{{ fairsharing_record | default({}) |tojson(4) }}
